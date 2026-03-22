@@ -10,7 +10,7 @@ def handler(event, context):
 
     # ===== CARGA DEL MODELO (solo una vez) =====
     if obj is None:
-        print("Cargando modelo ahora...")
+        print("Cargando modelo buenamente...")
         obj = Modelo()
         print("Modelo listo")
 
