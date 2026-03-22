@@ -3,6 +3,6 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Deploying Lambda..."
+      - echo "Deploying Lambdas..."
       - aws sts get-caller-identity
       - aws lambda update-function-code --function-name ClassifierODS --image-uri 997141224904.dkr.ecr.us-east-1.amazonaws.com/docker_classifier_ods:latest --region us-east-1
