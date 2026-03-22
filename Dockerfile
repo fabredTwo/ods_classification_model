@@ -1,15 +1,14 @@
-FROM python:3.10-slim
+FROM public.ecr.aws/lambda/python:3.11
 
-WORKDIR /app
+WORKDIR /var/task
 
-COPY . /app
+COPY requirements.txt .
 
-RUN apt-get update && apt-get install -y libgomp1
+RUN pip install --no-cache-dir --only-binary=:all: -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
+# descargar corpus NLTK en ruta visible
+RUN python -m nltk.downloader -d /usr/share/nltk_data punkt stopwords wordnet
 
-RUN python -m nltk.downloader punkt stopwords wordnet
+COPY . .
 
-EXPOSE 5000
-
-CMD ["python", "app.py"]
+CMD ["app.handler"]

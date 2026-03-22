@@ -1,9 +1,10 @@
 flask
 flask-cors
-numpy
+numpy==1.26.4
 pandas
-scikit-learn
+scikit-learn==1.7.1
 xgboost
 nltk
-scipy
+scipy==1.11.4
 joblib
+mangum
