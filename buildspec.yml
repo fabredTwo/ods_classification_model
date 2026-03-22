@@ -4,6 +4,10 @@ phases:
   pre_build:
     commands:
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 997141224904.dkr.ecr.us-east-1.amazonaws.com
+  build:
+    commands:
       - docker build -t mlods .
       - docker tag mlods:latest 997141224904.dkr.ecr.us-east-1.amazonaws.com/docker_classifier_ods:latest
+  post_build:
+    commands:
       - docker push 997141224904.dkr.ecr.us-east-1.amazonaws.com/docker_classifier_ods:latest
